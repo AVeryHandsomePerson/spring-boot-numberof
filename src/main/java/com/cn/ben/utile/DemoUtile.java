@@ -31,8 +31,7 @@ public class DemoUtile {
         }
       Map<String,Long> map =  list.stream().flatMap(line -> Arrays.stream(line.split(" ")))
                 .collect(Collectors.groupingBy(p -> p, Collectors.counting()));
-        ListStat.demoStat(map);
-
+        new MatrxCreate().demoStat(map);
         return super.toString();
     }
 
