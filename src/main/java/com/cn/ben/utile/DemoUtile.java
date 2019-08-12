@@ -41,8 +41,8 @@ public class DemoUtile {
     public boolean rowWriteFile(String ben){
         try {
 //            Files.lines(Paths.get("E:\\JinFengIDeaFile\\dzfile\\src\\main\\java\\com\\cn\\ben\\a.log"), StandardCharsets.UTF_8).forEach(System.out::println);
-            File FILE = new File("E:\\JinFengIDeaFile\\dzfile\\src\\main\\java\\com\\cn\\ben\\a.csv");
-            FileOutputStream fos = new FileOutputStream(FILE);
+            File file = new File("E:\\JinFengIDeaFile\\dzfile\\src\\main\\java\\com\\cn\\ben\\a.csv");
+            FileOutputStream fos = new FileOutputStream(file);
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(fos,"utf-8"));
             writer.write(ben);
             writer.flush();
