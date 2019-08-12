@@ -9,6 +9,7 @@ import org.springframework.util.StringUtils
   * @Description:
   */
 class MatrxCreate {
+  //初始化矩阵
   {
     for (i <- 1 to ben.length-1){
     ben(0)(i) = i.toString
@@ -72,18 +73,14 @@ class MatrxCreate {
         }
       }
     }
-
-//      .replaceAll("null", "\t")
     val sben = new StringBuffer()
     for (i <- 0 to ben.length-1) {
       for ( j <- 0 to ben.length-1) {
-        sben.append("\t").append(ben(i)(j))
+        sben.append(ben(i)(j)).append(",")
       }
       sben.append("\n")
     }
-    println(sben.toString.replaceAll("null", "0"))
-    map.toString
-    ""
+    sben.toString.replaceAll("null", "0")
   }
   def toMatrx(mat:String,num:String,matrxxb:Int):Unit = {
     mat match {
