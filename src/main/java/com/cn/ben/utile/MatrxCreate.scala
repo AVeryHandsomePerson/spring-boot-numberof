@@ -76,9 +76,12 @@ class MatrxCreate {
     val sben = new StringBuffer()
     for (i <- 0 to ben.length-1) {
       for ( j <- 0 to ben.length-1) {
-        sben.append(ben(i)(j)).append(",")
+        if(j == ben.length-1){
+          sben.append(ben(i)(j)).append("\n")
+        }else {
+          sben.append(ben(i)(j)).append(",")
+        }
       }
-      sben.append("\n")
     }
     sben.toString.replaceAll("null", "0")
   }
