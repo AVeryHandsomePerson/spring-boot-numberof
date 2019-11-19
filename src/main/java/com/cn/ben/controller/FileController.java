@@ -1,17 +1,11 @@
 package com.cn.ben.controller;
+import com.cn.ben.utile.DemoUtile;
 import com.cn.ben.utile.FileUtile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.*;
-import java.util.List;
 /**
  * @Auther: ljh
  * @Date: 2019/8/6 17:14
@@ -25,14 +19,23 @@ public class FileController {
     public String upload(@RequestParam("file") MultipartFile file) {
         return new FileUtile().fileUploading(file);
     }
-//    HttpServletRequest request,
-    @GetMapping("/download")
-    public String downloadFile(HttpServletResponse response) throws IOException {
-       return new FileUtile().download(response,"a.scv","/home/demo/input");
+    @RequestMapping("/download")
+    public String  generatedMtrix(String readPath,String outPath){
+        DemoUtile du = new DemoUtile();
+        String matrx= du.NumberOf(readPath);
+       boolean fileBole = du.rowWriteFile(outPath,matrx);
+        if(fileBole) {
+            return matrx;
+        }
+        return "下载失败 请联系管理员！！！";
     }
 }
 
-
+//    HttpServletRequest request,
+//    @GetMapping("/download")
+//    public String downloadFile(HttpServletResponse response) throws IOException {
+//       return new FileUtile().download(response,"a.scv","/home/demo/input");
+//    }
 //    @PostMapping("/batch")
 //    public String handleFileUpload(HttpServletRequest request) {
 //        List<MultipartFile> files = ((MultipartHttpServletRequest) request).getFiles("file");
